@@ -10,16 +10,9 @@ from django.http import JsonResponse
 from django.urls import reverse
 import logging
 from django.contrib import messages
-
-
- 
-
-
-
-
-
+from django.views.decorators.csrf import csrf_exempt
 logger = logging.getLogger(__name__)
-
+@csrf_exempt
 def create_ticket(request, instance_id=None):
     # Fetch the Ticket object if an instance_id is provided
     customer_profile = get_object_or_404(Ticket, id=instance_id) if instance_id else None
